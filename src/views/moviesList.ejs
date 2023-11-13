@@ -28,14 +28,22 @@
         </form>
         
     </div>
-    <ul>
-        <% for( let i = 0; i < movies.length; i++ ) { %>
-        <li>
-            <a href="/movies/detail/<%= movies[i].id %>"><%= movies[i].title %></a>
-        </li>
+    <% if (movies.length) { %>
+        <% if (locals.titulo) { %>
+            <h4>Resultado para la busqueda: <b><%= titulo %></b></h4>
+            <hr><br><br>         
         <% } %>
-
-    </ul>
+        <ul>
+            <% for( let i = 0; i < movies.length; i++ ) { %>
+            <li>
+                <a href="/movies/detail/<%= movies[i].id %>"><%= movies[i].title %></a>
+            </li>
+            <% } %>
+    
+        </ul>     
+    <% }else { %>
+        <p>NO HAY RESULTADOS PARA LA BUSQUEDA DE: <b><%= titulo.toUpperCase() %></b></p>
+    <% } %>
 </body>
 
 </html>
